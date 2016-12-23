@@ -4,13 +4,11 @@
 #define PS 1
 #define CLK 2
 
-#define PULSE_TIME 3
-
 void pulseClock(byte pin) {
   digitalWrite(pin, HIGH);
-  delayMicroseconds(PULSE_TIME);
+  asm volatile ("nop\n\t");
   digitalWrite(pin, LOW);
-  delayMicroseconds(PULSE_TIME);
+  asm volatile ("nop\n\t");
 }
 
 void setup() {

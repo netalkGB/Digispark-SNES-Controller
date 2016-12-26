@@ -4,11 +4,18 @@
 #define PS 1
 #define CLK 2
 
+#define PULSE_TIME 3
+
+char buf[8] = {
+  0x80, 0x80, 0x80, 0x80, 0x80, 0x80,
+  0x00, 0x00
+};
+
 void pulseClock(byte pin) {
   digitalWrite(pin, HIGH);
-  asm volatile ("nop\n\t");
+  delayMicroseconds(PULSE_TIME);
   digitalWrite(pin, LOW);
-  asm volatile ("nop\n\t");
+  delayMicroseconds(PULSE_TIME);
 }
 
 void setup() {
@@ -20,10 +27,8 @@ void setup() {
 }
 
 void loop() {
-  char buf[8] = {
-    0x80, 0x80, 0x80, 0x80, 0x80, 0x80,
-    0x00, 0x00
-  };
+  buf[0] = buf[1] = 0x80;
+  buf[6] = 0x00;
   pulseClock(CLK);
   pulseClock(PS);
   if (!digitalRead(DAT)) buf[6] |= 0x04;
@@ -50,5 +55,5 @@ void loop() {
   pulseClock(CLK);
   if (!digitalRead(DAT)) buf[6] |= 0x20;
   DigiJoystick.setValues(buf);
-  DigiJoystick.update();
+  DigiJoystick.delay(1);
 }

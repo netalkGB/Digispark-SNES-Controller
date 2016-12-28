@@ -4,7 +4,7 @@
 #define PS 1
 #define CLK 2
 
-#define PULSE_TIME 3
+#define PULSE_TIME 4
 
 char buf[8] = {
   0x80, 0x80, 0x80, 0x80, 0x80, 0x80,
@@ -55,5 +55,5 @@ void loop() {
   pulseClock(CLK);
   if (!digitalRead(DAT)) buf[6] |= 0x20;
   DigiJoystick.setValues(buf);
-  DigiJoystick.delay(1);
+  DigiJoystick.update();
 }

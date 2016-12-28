@@ -55,5 +55,5 @@ void loop() {
   pulseClock(CLK);
   if (!digitalRead(DAT)) buf[6] |= 0x20;
   DigiJoystick.setValues(buf);
-  DigiJoystick.update();
+  DigiJoystick.delay(1);
 }

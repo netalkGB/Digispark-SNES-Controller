@@ -21,5 +21,5 @@
 
 
 ## License
-This program is licensed under the GPL v3.
+This is licensed under the GPL v3.
 

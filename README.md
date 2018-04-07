@@ -1,5 +1,5 @@
 # Digispark-SNES-Controller
- Digispark SNES(SFC) controller HID controller
+ Digispark SNES(SFC) controller to HID controller
 
 ## How to make
 1. Upload this sketch to Digispark
